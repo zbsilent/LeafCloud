@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: leaf-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    gateway:
+      routes:
+        - id: leaf-myapp
+          uri: lb://leaf-myapp # 使用服务名而不是静态地址
+          predicates:
+            - Path=/api/**
+      discovery:
+        locator:
+          enabled: true
+#        namespace: 55e1e3e9-c1ad-4d3a-af6c-9c5c29860e10
+server:
+  port: 7001
+logging:
+  level:
+    root: debug

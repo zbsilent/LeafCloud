@@ -1,0 +1,22 @@
+spring:
+  config:
+    import:
+      - nacos:${spring.application.name}-dao.yaml
+      - nacos:${spring.application.name}-mybatis.yaml
+  application:
+    name: leaf-myapp
+  cloud:
+    nacos:
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yaml
+        refresh-enabled: true
+        namespace: bbb8909f-d614-4c71-b69b-2fa770dedfe2
+        group: LEAF_GROUP
+      discovery:
+        server-addr: localhost:8848
+logging:
+  level:
+    #    com.aurora.spring.fegins.com.aurora.dd.spring.fegins.MyClinet: DEBUG
+    # org.springframework.data.redis.core.RedisTemplate: DEBUG
+    io.lettuce.core.protocol: DEBUG
